@@ -1,0 +1,14 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/esterwhen/DesignTimeBuild
+/.vs/esterwhen/FileContentIndex
+/.vs/esterwhen/v16
+/.vs/esterwhen/v17/TestStore/0
+/.vs/esterwhen/v17
+/.vs
+/esterwhen/bin/Debug/net6.0
+/esterwhen/obj
+/esterwhen.UnitTests/bin/Debug/net6.0
+/esterwhen.UnitTests/obj
