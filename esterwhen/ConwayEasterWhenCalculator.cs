@@ -4,22 +4,26 @@
     {
         public DateTime Calculate(int year)
         {
-            int a = year % 19;
-            int b = year / 100;
-            int c = year % 100;
-            int d = b / 4;
-            int e = b % 4;
-            int f = (b + 8) / 25;
-            int g = (b - f + 1) / 3;
-            int h = (19 * a + b - d - g + 15) % 30;
-            int i = c / 4;
-            int k = c % 4;
-            int L = (32 + 2 * e + 2 * i - h - k) % 7;
-            int m = (a + 11 * h + 22 * L) / 451;
-            int month = (h + L - 7 * m + 114) / 31;
-            int day = 1 + (h + L - 7 * m + 114) % 31;
-
-            return new DateTime(year, month, day);
+            int golden = year % 19 + 1;
+            int century = year / 100 + 1;
+            int X = (3 * century) / 4 - 12;
+            int Y = (8 * century + 5) / 25 - 5;
+            int Z = (5 * year) / 4 - X - 10;
+            int C = 20 + Y - X;
+            int epac = (11 * golden + C) % 30;
+            if (epac == 24) epac++; 
+            if ((epac == 25) && (golden > 11)) epac++; 
+            int N = 44 - epac;
+            if (N < 21) { N = N + 30; }
+            int P = (N + 7) - ((Z + N) % 7);
+            int month = 3;
+            if (P > 31)
+            {
+                P = P - 31;
+                month = 4;
+            }
+            return new DateTime(year, month, P);
         }
+         
     }
 }
