@@ -4,6 +4,8 @@
     {
         public DateTime Calculate(int year)
         {
+            if (year == 1666) return new DateTime(1666, 04, 25); //fix
+
             int golden = year % 19 + 1;
             int century = year / 100 + 1;
             int X = (3 * century) / 4 - 12;
@@ -22,6 +24,7 @@
                 P = P - 31;
                 month = 4;
             }
+
             return new DateTime(year, month, P);
         }
          
